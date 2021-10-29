@@ -5,8 +5,8 @@ c = 10000
 sum = a+b+c
 
 
-walking = "body health plus one"
-print(walking * 6)
+player_hit_spikes = "body health subtract one"
+print(player_hit_spikes * 6)
 
 
 
@@ -17,7 +17,7 @@ else:
     print("Max_is_sick")
 
 
-while 1234<=1289:
-    print("good")
+while 1234 and 1290<=1289:
+   print("good")
 else:
     print("not good")
