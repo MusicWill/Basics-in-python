@@ -5,17 +5,19 @@ import pygame
 # activate the pygame library .
 # initiate pygame and give permission
 # to use pygame's functionality.
-pygame.init()
+# I erased pygame.init() to see what would happen
+
 
 # what does display.set_mode do?
 # try googling "pygame display.set_mode"
 # hint: https://www.pygame.org/docs/ref/display.html
 # is it to set whether the screensaver may run or not?
-win = pygame.display.set_mode((500, 500))
+# I changed the numbers to see what would happen.
+win = pygame.display.set_mode((200, 200))
 
 # what does set_caption do?
 #set_caption sets the current window caption
-pygame.display.set_caption("Moving rectangle")
+
 
 # object current co-ordinates
 x = 200
@@ -63,7 +65,7 @@ while run:
     # why check if x > 0?
     #x has to be more than 0?
     # what happens if you take it out? and go allll the way left (keep clicking left arrow)
-    if keys[pygame.K_LEFT] and x > 0:
+    if keys[pygame.K_LEFT]:
         # decrement in x co-ordinate
         x -= vel
 
@@ -74,8 +76,9 @@ while run:
         # increment in x co-ordinate
         x += vel
 
+# I took out the y > 0 things for the next few lines of code.
     # why check if y > 0? try taking it out
-    if keys[pygame.K_UP] and y > 0:
+    if keys[pygame.K_UP]:
         # decrement in y co-ordinate
         y -= vel
 
@@ -98,4 +101,4 @@ while run:
     pygame.display.update()
 
 # closes the pygame window
-pygame.quit()
+#I took out pygame.quit() to see what would happen.
