@@ -23,6 +23,11 @@ size = (window_width, window_height)
 screen = pygame.display.set_mode (size)
 
 
+clock = pygame.time.Clock()
+
+
+
+
 pygame.display.set_caption("Welcome to Tetrix")
 
 '''
@@ -57,7 +62,6 @@ fps = 25
 while is_running is True:
     if tiles.tile is None:
         tiles.new_tile()
-    screen.fill(white)
     counter+=1
     if counter > 100000:
         counter = 0
@@ -65,20 +69,32 @@ while is_running is True:
         if tiles.state == "start":
             tiles.gravity()
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type==pygame.MOUSEBUTTONDOWN:
             tiles.rotate()
-        if event.type == pygame.K_LEFT:
-            tiles.side_movement(-1)
-        if event.type == pygame.K_LEFT:
-            tiles.side_movement(1)
         if event.type == pygame.QUIT:
             is_running = False
-        if event.type == pygame.K_s:
-            pressing_down = True
-            tiles.y_movement(1)
-            
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.MOUSEBUTTONDOWN:
+                tiles.rotate()
+            if event.key == pygame.K_a:
+                tiles.side_movement(-1)
+            if event.key == pygame.K_d:
+                tiles.side_movement(1)
+            if event.key == pygame.QUIT:
+                is_running = False
+            if event.key == pygame.K_s:
+                pressing_down = True
+                tiles.y_movement(1)
+    screen.fill(white)
 
-    draw_grid(tiles)
+    for i in range(tiles.height):
+        for j in range(tiles.width):
+            pygame.draw.rect(screen, grey, [tiles.x + tiles.zoom * j, tiles.y + tiles.zoom * i, tiles.zoom, tiles.zoom],
+                             1)
+            if tiles.field[i][j] > 0:
+                pygame.draw.rect(screen, cyan
+                [tiles.x + tiles.zoom * j + 1, tiles.y + tiles.zoom * i + 1, tiles.zoom - 2,
+                 tiles.zoom - 1])
     if tiles.tile is not None:
 
         for a in range (4):
@@ -94,7 +110,9 @@ while is_running is True:
 
 
 
-    pygame.display.update()
+    pygame.display.flip()
+    clock.tick(fps)
+
 
 
 block_grid = [[0,  1,  2,  3,  4,  5,  6,  7],
@@ -121,6 +139,11 @@ short_i = [[0, 1, 2, 3],
           [0, 4, 8, 12]]
 
 tiny_square = [[0, 1, 4, 5]]
+
+l_shaped = [[0, 4, 8, 9],
+            [1, 5, 9, 8],
+            [4, 5, 6, 10],
+            [6, 5, 4, 8]]
 
 
 

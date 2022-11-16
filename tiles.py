@@ -21,10 +21,16 @@ class Tiles:
 
     tiny_square = [[0, 1, 4, 5]]
 
+    l_shaped = [[0, 4, 8, 9],
+            [1, 5, 9, 8],
+            [4, 5, 6, 10],
+            [6, 5, 4, 8]]
+
     all_tiles = []
     all_tiles.append(tiny_square)
     all_tiles.append(short_i)
     all_tiles.append(tiny_t)
+    all_tiles.append(l_shaped)
     print(all_tiles)
 
     x = 0

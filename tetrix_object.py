@@ -51,9 +51,9 @@ class TetrixObject:
             self.tile.rotation = old_rotation
 
     def gravity(self):
-        self.tile.y+=0
+        self.tile.y+=1
         if self. intersects():
-            self.tile.y-=0
+            self.tile.y-=1
             self.freeze
 
     def freeze(self):
